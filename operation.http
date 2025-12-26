@@ -1,0 +1,30 @@
+### Create operation
+POST http://localhost:3025/operations
+Content-Type: application/json
+
+{
+  "external_id": "op-456",
+  "amount": 50,
+  "currency": "USD"
+}
+
+### Retry (idempotent)
+POST http://localhost:3025/operations
+Content-Type: application/json
+
+{
+  "external_id": "op-456",
+  "amount": 50,
+  "currency": "USD"
+}
+
+### Conflict
+POST http://localhost:3025/operations
+Content-Type: application/json
+
+{
+  "external_id": "op-456",
+  "amount": 999,
+  "currency": "USD"
+}
+
